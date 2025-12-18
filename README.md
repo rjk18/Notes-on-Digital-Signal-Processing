@@ -12,10 +12,10 @@
 - **图1**：采集一个 **1 Hz** 和一个 **99 Hz** 的正弦波。
 - **图2**：采集一个 **1 Hz** 和一个 **101 Hz** 的正弦波。
 
-![Aliasing Demo Image 1](images/alias_1hz_99hz.png)
+![Aliasing Demo Image 1](images/preface/alias_1hz_99hz.png)
 ***图1**：99Hz的信号（蓝色）被100Hz采样后，看起来完全变成了另一个频率的信号（红色圆点）。你能看出它变成了多少Hz吗？*
 
-![Aliasing Demo Image 2](images/alias_1hz_101hz.png)
+![Aliasing Demo Image 2](images/preface/alias_1hz_101hz.png)
 ***图2**：101Hz的信号（蓝色）遭遇了同样的命运。采样点（红色圆点）的连线看起来和某个低频信号一模一样。*
 
 **思考一下**：为什么截然不同的高频信号，采样后却"看起来"一模一样？如果采样系统无法区分它们，会导致什么后果？（这就是"失真"）
