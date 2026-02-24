@@ -11,14 +11,17 @@
   我写了一段代码，用 **100 Hz 的采样率** 去采集两个不同的信号：
 
   - **图1**：采集一个 **1 Hz** 和一个 **99 Hz** 的正弦波。
+  - **图2**：采集一个 **1 Hz** 和一个 **101 Hz** 的正弦波。
 
-- **图2**：采集一个 **1 Hz** 和一个 **101 Hz** 的正弦波。
-
-  <img src="images/preface/alias_1hz_99hz.png" width="600" alt="Aliasing Demo Image 1">
+  <div style="text-align: center;">
+      <img src="images/preface/alias_1hz_99hz.png" width="600" alt="Aliasing Demo Image 1">
+  </div>
 
   **图1**：99Hz的信号（蓝色）被100Hz采样后，看起来完全变成了另一个频率的信号（红色圆点）。你能看出它变成了多少Hz吗？
 
-<img src="images/preface/alias_1hz_101hz.png" width="600" alt="Aliasing Demo Image 2">
+  <div style="text-align: center;">
+      <img src="images/preface/alias_1hz_101hz.png" width="600" alt="Aliasing Demo Image 2">
+  </div>
 
 **图2**：101Hz的信号（蓝色）遭遇了同样的命运。采样点（红色圆点）的连线看起来和某个低频信号一模一样。
 
