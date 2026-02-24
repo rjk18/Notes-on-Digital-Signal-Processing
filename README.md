@@ -83,7 +83,7 @@ DSP的知识体系可以梳理成一条比较清晰的路径，这也是本仓�
 
 **别被公式吓倒，去追问它背后的直觉。** 让我们一起，把这座山爬过去。
 
-### 提示：本作品采用 署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0)许可协议进行许可。
+## 提示：本作品采用 署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0)许可协议进行许可。
 中文版 (简体) 法律全文： https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.zh-hans
 
 英文版 (原文) 法律全文： https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
