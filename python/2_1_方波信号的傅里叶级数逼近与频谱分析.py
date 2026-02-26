@@ -95,8 +95,4 @@ print("正在生成 GIF，请稍候...")
 ani.save('2_1_傅里叶级数逼近.gif', writer='pillow', fps=10)
 print("GIF 保存成功：2_1_傅里叶级数逼近.gif")
 
-# 2. 或者保存为 MP4 (需要安装 FFmpeg)
-# ani.save('fourier_series_animation.mp4', writer='ffmpeg', fps=15)
-
-# 如果你仍然想在保存后查看图形，可以保留 plt.show()
 plt.show()
