@@ -20,9 +20,11 @@ $$
 ### 2.2 频域：卷积与延拓
 
 周期信号 $p(t)$ 的傅里叶变换仍为冲激串，但发生在频率轴上，强度为 $\Omega_s = \frac{2\pi}{T_s}$：
+
 $$
 P(j\Omega) = \Omega_s \sum_{k=-\infty}^{\infty} \delta(\Omega - k\Omega_s)
 $$
+
 根据傅里叶变换性质：**时域相乘 $\iff$ 频域卷积**（并乘以 $\frac{1}{2\pi}$）、卷积的性质 $X(j\Omega) * \delta(\Omega - \Omega_0) = X(j(\Omega - \Omega_0))$：
 
 $$
@@ -30,41 +32,45 @@ X_s(j\Omega) = \frac{1}{2\pi} [X(j\Omega) * P(j\Omega)]
 $$
 
 代入 $P(j\Omega)$ 表达式：
+
 $$
 X_s(j\Omega) = \frac{1}{T_s} \sum_{k=-\infty}^{\infty} X(j(\Omega - k\Omega_s))
 $$
 
-<p align="center">
-<img src="D:\DSP\Markdown\第一章：基础概念：数字化及时域分析\1_4_采样定理\采样定理的频域示意图.png" width="300" alt="Aliasing Demo Image 1">
-</p>
+<div align="center">
+        <img src="/images/2_3_从 FT 到DTFT：时域采样与频域周期性/采样定理的频域示意图.png" width="300" />
+</div>
 
 **结论**：采样信号的频谱 $X_s(j\Omega)$ 是原频谱按 $\Omega_s$ 为步长的无限次平移叠加，且幅度缩放了 $1/T_s$ 倍。
 
 ## 3. 深入理解数字角频率 $\omega$
 
-为了让数字信号处理**脱离具体的硬件（采样频率 $\Omega_s$）**约束，我们引入归一化频率$\omega$ 。**数字角频率** $\omega$ 是从连续信号处理跨入数字信号处理（ $DSP$ ）的最关键一步。
+为了让数字信号处理脱离具体的硬件（**采样频率 $\Omega_s$**）约束，我们引入归一化频率 $\omega$ 。**数字角频率** $\omega$是从连续信号处理跨入数字信号处理的最关键一步。
 
 ### 3.1 物理意义的剥离：从 $t$ 到 $n$
 在连续世界里，信号 $x(t)$ 的自变量是**时间**（单位：秒）。
 在离散世界里，我们通过采样周期 $T_s$ 对信号进行采样：
+
 $$
 t = n \cdot T_s = \frac{n}{f_s}
 $$
-这时，信号变成了 $x[n] = x(n T_s)$。对于计算机来说，它只知道 $n=0, 1, 2...$，而不直接感知 $T_s$。
+
+这时，信号变成了 $x[n] = x(n T_s)$。对于计算机来说，它只知道 $n=0, 1, 2$....，而不直接感知 $T_s$。
 
 ---
 
 ### 3.2 数学推导：归一化过程
 当我们考察一个简单的正弦信号时：
-* **连续正弦波**：$\cos(\Omega t)$，其中 $\Omega$ 是模拟角频率（单位：rad/s）。
-* **离散采样后**：$\cos(\Omega \cdot n T_s)$。
+* **连续正弦波**： $\cos(\Omega t)$，其中 $\Omega$是模拟角频率（单位：rad/s）。
+* **离散采样后**： $\cos(\Omega \cdot n T_s)$。
 
 为了简化运算，我们将由于采样产生的常数项 $\Omega \cdot T_s$ 合并为一个新的变量：
+
 $$
 \omega = \Omega \cdot T_s = \frac{\Omega}{f_s} = \frac{2\pi \Omega}{\Omega_s}
 $$
 
-这里的 **$\omega$ 就是数字角频率**（单位：rad）。
+这里的 $\omega$ 就是**数字角频率**（单位：rad）。
 
 ### 3.3 映射关系：从 $\Omega$ 到 $\omega$
 
@@ -81,7 +87,7 @@ $$
 ### 3.4 周期性与旋转矢量
 
 - **代数证明**：由于 $e^{-j2\pi n} = 1$，故 $X(e^{j(\omega + 2\pi)}) = X(e^{j\omega})$。
-- **物理直观**：$\omega$ 描述的是旋转矢量。当相位增加 $2\pi$，矢量回到原点。$\omega = \pi$ 代表正负交替最快的频率（最高频）。
+- **物理直观**： $\omega$ 描述的是旋转矢量。当相位增加 $2\pi$，矢量回到原点。 $\omega = \pi$ 代表正负交替最快的频率（最高频）。
 
 ## 4. 公式推导：连接模拟与数字的桥梁
 
@@ -90,22 +96,27 @@ $$
 
 ##### 第一步：时域采样表示
 假设采样周期为 $T_s$，连续信号 $x(t)$ 采样后的信号 $x_s(t)$ 为：
+
 $$
 x_s(t) = x(t) \cdot \sum_{n=-\infty}^{\infty} \delta(t - nT_s) = \sum_{n=-\infty}^{\infty} x[n] \delta(t - nT_s)
 $$
 
 ##### 第二步：对采样信号做连续 FT
 根据 FT 定义 $X(j\Omega) = \int x(t) e^{-j\Omega t} dt$，代入上式：
+
 $$
 X_s(j\Omega) = \int_{-\infty}^{\infty} \left[ \sum_{n=-\infty}^{\infty} x[n] \delta(t - nT_s) \right] e^{-j\Omega t} dt
 $$
+
 利用冲激函数的采样特性（只在 $t=nT_s$ 时有值）：
+
 $$
 X_s(j\Omega) = \sum_{n=-\infty}^{\infty} x[n] \int_{-\infty}^{\infty} \delta(t - nT_s) e^{-j\Omega t} dt = \sum_{n=-\infty}^{\infty} x[n] e^{-j\Omega n T_s}
 $$
 
 ##### 第三步：定义映射（引入数字角频率）
 令数字角频率 $\omega = \Omega T_s$，代入上式，即得到 **DTFT 正变换**：
+
 $$
 X(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x[n] e^{-j\omega n}
 $$
@@ -128,6 +139,7 @@ $$
 ##### 第二步：带补偿的反变换公式
 
 我们将补偿后的频谱代入傅里叶反变换（IFT）公式，求特定采样点 $t=nT_s$ 的值：
+
 $$
 x[n] = \frac{1}{2\pi} \int_{-\pi/T_s}^{\pi/T_s} \underbrace{\left[ X_s(j\Omega) \cdot T_s \right]}_{\text{补偿后的频谱}} e^{j\Omega n T_s} d\Omega
 $$
@@ -135,9 +147,11 @@ $$
 ##### 第三步：变量替换与算子抵消
 
 执行变量代换 $\omega = \Omega T_s$，则 $d\Omega = \frac{1}{T_s} d\omega$。代入上式：
+
 $$
 x[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi} \left[ X(e^{j\omega}) \cdot T_s \right] e^{j\omega n} \left( \frac{1}{T_s} d\omega \right)
 $$
+
 此时，奇迹发生了：
 
 > **滤波器增益带来的 $T_s$** 与 **微分项产生的 $1/T_s$** 在数学上**完美抵消**。
@@ -153,6 +167,7 @@ $$
 ### 1. 关系总结
 
 #### 第一步：周期化与幅度缩放（由连续到采样）
+
 $$
 X_s(j\Omega) = \frac{1}{T_s} \sum_{k=-\infty}^{\infty} X\left(j(\Omega - k\Omega_s)\right)
 $$
@@ -166,7 +181,7 @@ $$
 X(e^{j\omega}) = \left. X_s(j\Omega) \right|_{\Omega = \omega/T_s}
 $$
 * **动作**：将模拟频率轴 $\Omega$ 映射到数字频率轴 $\omega$。
-* **比例尺**：$\omega = \Omega T_s$。
+* **比例尺**： $\omega = \Omega T_s$。
 * **物理意义**：将物理单位（rad/s）剥离。在 $X_s(j\Omega)$ 中，周期是 $\Omega_s = \frac{2\pi}{T_s}$；映射到 $X(e^{j\omega})$ 后，周期变成了恒定的 $2\pi$。
 
 #### 第三步：合二为一（最终对应关系）
