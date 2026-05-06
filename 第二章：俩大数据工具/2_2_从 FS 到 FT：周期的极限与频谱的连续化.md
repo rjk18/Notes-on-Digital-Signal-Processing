@@ -50,7 +50,7 @@ $$
  当 $T_0 \to \infty$ 时：
    * 离散频率 $k\Omega_0$ 变为连续变量 $\Omega$。
    * 频率间隔 $\Omega_0$ 变为微分算子 $d\Omega$。
-   * 求和 $\sum_{k=-\infty}^{\infty} (\cdots) \Omega_0 转化为积分 \int_{-\infty}^{\infty} (\cdots) \, d\Omega$
+   * 求和 $\sum_{k=-\infty}^{\infty} (\cdots) \Omega_0 转化为积分 \int_{-\infty}^{\infty} (\cdots)  d\Omega$
 
 最终得到**傅里叶反变换IFT**公式：
 
