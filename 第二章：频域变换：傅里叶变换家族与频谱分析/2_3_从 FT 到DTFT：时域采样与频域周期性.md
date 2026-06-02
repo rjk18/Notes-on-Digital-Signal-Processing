@@ -131,7 +131,7 @@ $$
 - **补偿**：由于采样时幅度变为了 $1/T_s$，为了还原真实物理幅度，滤波器的增益必须设为 $T_s$。
 
 $$
-H(j\Omega) = \begin{cases} T_s, & |\Omega| \le \frac{\pi}{T_s} \\ 0, & \text{其他} \end{cases}
+H(j\Omega) = \begin{cases} T_s, & |\Omega| \le \frac{\pi}{T_s} \\\\ 0, & \text{其他} \end{cases}
 $$
 
 ##### 第二步：带补偿的反变换公式
